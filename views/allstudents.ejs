@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/appheader') %>
+
+  <body>
+    <%- include('layouts/appnavbar') %>
+
+
+      <!-- student search -->
+      <section>
+        <div class=" container-fluid bg-white p-3">
+          <h3 class=" text-start mx-auto p-4">
+            All students
+          </h3>
+          <!-- student search form -->
+          <!-- <div class="container-fluid shadow-sm p-2 mb-1 rounded"> -->
+          <div class="container-fluid shadow-sm p-2 mb-1 rounded">
+            <form class="d-flex flex-row justify-content-evenly bg-secondary p-5" style="height: 12rem;">
+              <div>
+                <label for="studentID">Student ID</label>
+                <input class="form-control me-4" type="search" aria-label="Search" style="width: 12rem;">
+              </div>
+              <div>
+                <label for="studentID">Surname</label>
+                <input class="form-control me-4" type="search" aria-label="Search" style="width: 12rem;">
+              </div>
+              <div>
+                <label for="studentID">Firstname</label>
+                <input class="form-control me-4" type="search" aria-label="Search" style="width: 12rem;">
+              </div>
+              <div>
+                <label for="studentID">Date of Birth</label>
+                <input class="form-control me-4" type="search" aria-label="Search" style="width: 12rem;">
+              </div>
+              <div>
+                <button type="submit" class="btn btn-success mt-4">Search </button>
+              </div>
+            </form>
+          </div>
+          <!--search results table  -->
+
+          <div class="container-fluid mb-5">
+
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Surname</th>
+                  <th scope="col">Firstname</th>
+                  <th scope="col">Date of birth</th>
+                  <th scope="col">Gender</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for (var i=0; i < allstudents.length; i++) { %>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>
+                      <%= allstudents[i].surname %>
+                    </td>
+                    <td>
+                      <%= allstudents[i].firstname %>
+                    </td>
+                    <td>
+                      <%= allstudents[i].DOB %>
+                    </td>
+                    <td>
+                      <%= allstudents[i].gender %>
+                    </td>
+                    <td>
+                      <%= allstudents[i].fatherPhone %>
+                    </td>
+                    <td>    
+                      <form action="/studentdetails/<%= allstudents[i]._id %>" method="GET">
+                        <button type="submit" class="btn btn-outline-secondary me-1"><i class="bi bi-eye"></i></button>
+                      </form>
+                        <button type="submit" class="btn btn-outline-success me-1" data-bs-toggle="modal"
+                          data-bs-target="#editstudentModal"><i class="bi bi-pencil-square"></i></button>
+                        <form action="/delete/<%= allstudents[i]._id %>" method="POST">
+                            <button class=" btn btn-outline-danger me-1" onclick= "return confirm(
+                              `Are you sure you want to delete this the record?`)"><i class="bi bi-trash-fill"></i></button>
+                        </form>
+                    </td>
+                    <%} %>
+                  </tr>
+              </tbody>
+            </table>
+            <!-- Pagination -->
+            <nav aria-label="Page navigation example ">
+              <ul class="pagination justify-content-end">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- New Edit student modal -->
+      <div class="modal fade" id="editstudentModal" tabindex="-1" aria-labelledby="editstudentModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addstudentModalLabel">Edit Student Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="col-md-6">
+                <label for="editstudentModalSurname" class="form-label">Surname</label>
+                <input type="text" class="form-control" id="editstudentModalSurname" name="surname"
+                  value="<%= allstudents.surname %>">
+              </div>
+              <div class="col-md-6">
+                <label for="editstudentModalFirstname" class="form-label">Firstname</label>
+                <input type="text" class="form-control" id="editstudentModalFirstname" name="firstname"
+                  value="<%= allstudents.firstname %>">
+              </div>
+              <div class="col-md-6">
+                <label for="editstudentModalDOB" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="editstudentModalDOB" name="DOB"
+                  value="<%=  allstudents.DOB %>">
+              </div>
+              <div class="col-md-6">
+                <label for="editstudentModalGender" class="form-label">Gender</label>
+                <select id="editstudentModalGender" class="form-select" name="gender">
+                  <option selected>
+                    <%= allstudents.gender %>
+                  </option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="editstudentModalfather" class="form-label">Father's Name</label>
+                <input type="text" class="form-control" id="editstudentModalfather" name="fatherName"
+                  value="<%= allstudents.fatherName %>">
+              </div>
+              <div class="col-md-6">
+                <label for="fatherPhone" class="form-label">Father's Tel:</label>
+                <input type="tel" class="form-control" id="fatherPhone" name="fatherPhone"
+                  value="<%= allstudents.fatherPhone %>">
+              </div>
+              <div class="col-md-6">
+                <label for="editstudentModalmother" class="form-label">Mother's Name</label>
+                <input type="text" class="form-control" id="editstudentModalmother" name="motherName"
+                  value="<%= allstudents.motherName %>">
+              </div>
+              <div class="col-md-6">
+                <label for="motherPhone" class="form-label">Mother's Tel</label>
+                <input type="tel" class="form-control" id="motherPhone" name="motherPhone"
+                  value="<%= allstudents.motherPhone %>">
+              </div>
+              <div class="col-md-12">
+                <label for="formFile" class="form-label">Upload a Picture</label>
+                <input class="form-control" type="file" id="studentPicture" name="stdPhoto">
+              </div>
+              <div class="col-md-6 ms-6">
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <%-include('layouts/appfooter'); -%>
+        <%-include('layouts/scripts');-%>
+
+  </body>
+
+</html>

@@ -1,0 +1,124 @@
+
+<!-- navbar -->
+<nav class="navbar navbar-expand-md bg-dark fixed-top mb-5">
+  <div class="container-xxl">
+    <a href="/" class="navbar-brand">
+      <span class="fw-bold text-secondary">
+        <i class="bi bi-stack"></i>
+        Alpha SMS- the software
+      </span>
+    </a>
+    <ul class="navbar-nav mb-2 mb-lg-0 d-flex ms-auto">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">ABOUT US</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/features"> FEATURES</a>
+      </li>
+      <!-- login Button modal trigger -->
+      <li class="nav-item">
+        <span type="button" class=" nav-link btn btn-primary bg-dark text-primary me-2"
+          data-bs-toggle="modal" data-bs-target="#loginModal">
+          LOGIN
+      </span>
+      </li>
+      <!-- Signup button modal trigger  -->
+      <li class="nav-item">
+        <span type="button" class=" nav-link btn btn-primary bg-dark text-primary"
+          data-bs-toggle="modal" data-bs-target="#signupModal">
+          SIGNUP
+      </span>
+      </li>
+    </ul>
+    <!-- toggle button for mobile nav -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
+      aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+ <!-- login modal -->
+ <div class="modal animate__animated animate__bounce fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title fw-bold" id="loginModalLabel">Log in to Alpha SMS</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="/login" method="POST">
+                  <div class="mb-3">
+                      <label for="loginUsername" class="form-label">Username</label>
+                      <input type="email" class="form-control" id="loginUsername" aria-describedby="emailHelp" name = "email">
+                      <div id="emailHelp" class="form-text">Please enter your username in the space provided above
+                      </div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="loginPassword" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="loginPassword" name="password">
+                  </div>
+                  <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Keep me logged in</label>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- signup modal -->
+<div class="modal animate__animated animate__bounce fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="signupModalLabel">Sign in to create an account</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+          </div>
+          <div class="modal-body">
+              <form class="row g-3" action="/signup" method="POST">
+                  <div class="col-md-6">
+                      <label for="signupModalSurname" class="form-label">Surname</label>
+                      <input type="text" class="form-control" id="signupModalSurname" name="surname">
+                  </div>
+                  <div class="col-md-6">
+                      <label for="signupModalFirstname" class="form-label">Firstname</label>
+                      <input type="text" class="form-control" id="signupModalFirstname" name="firstname">
+                  </div>
+                  <div class="col-md-6">
+                      <label for="signupModalDOB" class="form-label">Date of Birth</label>
+                      <input type="date" class="form-control" id="signupModalDOB" name="DOB">
+                  </div>
+                  <div class="col-md-6">
+                      <label for="signupModalGender" class="form-label">Gender</label>
+                      <select id="signupModalGender" class="form-select" name="gender">
+                          <option selected>Male</option>
+                          <option>Female</option>
+                          <option>Other</option>
+                      </select>
+                  </div>
+                  <div class="col-12">
+                      <label for="signupModalEmail" class="form-label">Email</label>
+                      <input type="email" class="form-control" id="signupModalEmail" name="email">
+                  </div>
+                  <div class="col-md-6">
+                      <label for="signupModalPassword" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="signupModalPassword" name="password">
+                  </div>
+                  <div class="col-md-6">
+                      <label for="signupModalPassword1" class="form-label">Confirm Password</label>
+                      <input type="password" class="form-control" id="signupModalPassword1" name="Cpassword">
+                  </div>
+                  <div class="col-md-6 ms-6">
+                      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Sign up</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

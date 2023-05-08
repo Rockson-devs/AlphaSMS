@@ -1,0 +1,63 @@
+
+
+<!-- New Edit student modal -->
+<div class="modal fade" id="editstudentModal" tabindex="-1" aria-labelledby="editstudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addstudentModalLabel">Edit Student Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3" action="/editstudentdetails" method="PUT">
+              <!-- //put or patch or post -->
+            <div class="col-md-6">
+              <label for="editstudentModalSurname" class="form-label">Surname</label>
+              <input type="text" class="form-control" id="editstudentModalSurname" name="surname" value= "<%= oneStudent.surname %>">
+            </div>
+            <div class="col-md-6">
+              <label for="editstudentModalFirstname" class="form-label">Firstname</label>
+              <input type="text" class="form-control" id="editstudentModalFirstname" name="firstname" value="<%= oneStudent.firstname %>">
+            </div>
+            <div class="col-md-6">
+              <label for="editstudentModalDOB" class="form-label">Date of Birth</label>
+              <input type="date" class="form-control" id="editstudentModalDOB" name="DOB" value="<%=  oneStudent.DOB %>">
+            </div>
+            <div class="col-md-6">
+              <label for="editstudentModalGender" class="form-label">Gender</label>
+              <select id="editstudentModalGender" class="form-select" name="gender" >
+                <option selected><%= oneStudent.gender %> </option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="editstudentModalfather" class="form-label">Father's Name</label>
+              <input type="text" class="form-control" id="editstudentModalfather" name="fatherName" value="<%= oneStudent.fatherName %>">
+            </div>
+            <div class="col-md-6">
+              <label for="fatherPhone" class="form-label">Father's Tel:</label>
+              <input type="tel" class="form-control" id="fatherPhone" name="fatherPhone" value="<%= oneStudent.fatherPhone %>">
+            </div>
+            <div class="col-md-6">
+              <label for="editstudentModalmother" class="form-label">Mother's Name</label>
+              <input type="text" class="form-control" id="editstudentModalmother" name="motherName" value="<%= oneStudent.motherName %>">
+            </div>
+            <div class="col-md-6">
+              <label for="motherPhone" class="form-label">Mother's Tel</label>
+              <input type="tel" class="form-control" id="motherPhone" name="motherPhone" value="<%= oneStudent.motherPhone %>">
+            </div>
+            <div class="col-md-12">
+              <label for="formFile" class="form-label">Upload a Picture</label>
+              <input class="form-control" type="file" id="studentPicture" name="stdPhoto">
+            </div>
+            <div class="col-md-6 ms-6">
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+            </div>
+             %>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

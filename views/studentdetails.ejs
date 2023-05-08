@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('layouts/appheader') %>
+
+<body>
+    <!-- navbar -->
+
+    <%- include('layouts/appnavbar') %>
+
+        <!-- student detail search -->
+        <div class="container-fluid ">
+            <section>
+                <div class=" container-fluid bg-white p-3">
+                    <h3 class=" text-start mx-auto p-4 ">
+                        Student Details
+                    </h3>
+                    <!-- student detail form -->
+                    <!-- student detail-img and content -->
+                    <div class="container-fluid d-flex" style="max-width: 100rem;">
+                        <div class="col-2 p-1">
+                            <img src="./images/black.jpeg" class="img-fluid rounded-start" alt="Student detail">
+                        </div>
+                        <div class="col-auto">
+                            <div class="container ms-2">
+                                <div class="row">
+                                    <div class=" col-2 me-5">Surname:</div>
+                                    <p type="text" class="col-2 ms-5 fw-bold" id="detailSurname"> <%= oneStudent.surname %></p>
+                                </div>
+                                <div class="row">
+                                    <div class=" col-2 me-5">Firstname:</div>
+                                    <p type="text" class="col-2 ms-5 fw-bold" id="detailFirstname"> <%=oneStudent.firstname %></p>
+                                </div>
+                                <div class="row">
+                                    <div class=" col-2 me-5 text-nowrap">Date of Birth:</div>
+                                    <p type="text" class="col-2 ms-5 fw-bold" id="detailDOB"> <%=oneStudent.DOB.toLocaleDateString() %></p>
+                                </div>
+                                <div class="row">
+                                    <div class=" col-2 me-5">Gender:</div>
+                                    <p type="text" class="col-2 ms-5 fw-bold" id="detailGender"><%=oneStudent.gender %></p>
+                                </div>
+                                <div class="row">
+                                    <div class=" col-2 me-5 text-nowrap">Father's Name:</div>
+                                    <p type="text" class="col-2 ms-5 fw-bold text-nowrap" id="detailFather">
+                                        <%= oneStudent.fatherName %></p>
+                                </div>
+                                <div class="row">
+                                    <div class=" col-2 me-5">Father's Tel</div>
+                                    <p type="text" class="col-2 ms-5 fw-bold" id="detailFatherTel"> <%=oneStudent.fatherPhone %></p>
+                                </div>
+                                <div class="row">
+                                    <div class=" col-2 me-5 text-nowrap">Mothers's Name:</div>
+                                    <p type="text" class="col-2 ms-5 fw-bold text-nowrap" id="detailMother">
+                                        <%= oneStudent.mothername %></p>
+                                </div>
+                                <div class="row">
+                                    <div class=" col-2 me-5 text-nowrap">Mothers Tel</div>
+                                    <p type="text" class="col-2 ms-5 fw-bold" id="detailFatherTel">   <%= oneStudent.motherPhone %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <%-include('layouts/appfooter');-%>
+    <%-include('layouts/scripts');-%>
+
+
+</body>
+
+</html>
